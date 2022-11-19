@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <displayName>k__BackingField: MachineGun
   <discplaySprite>k__BackingField: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  <shootDelay>k__BackingField: 0.1
+  <shootDelay>k__BackingField: 0.2
   <shootingStrategy>k__BackingField:
     id: 0
   references:
@@ -23,5 +23,5 @@ MonoBehaviour:
       type: {class: DefaulShootingStrategy, ns: , asm: Assembly-CSharp}
       data:
         _projectile: {fileID: 3233416444526197499, guid: a0d15a840d47d6147bfaa29b8ad1b243, type: 3}
-        _speed: 35
+        _speed: 15
         _damage: 10
