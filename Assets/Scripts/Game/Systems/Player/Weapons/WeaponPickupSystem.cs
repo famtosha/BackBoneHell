@@ -17,13 +17,13 @@ public class WeaponPickupSystem : GameSystem
 
     public override void OnStart()
     {
-        player.aimRoot.a.sprite.sprite = null;
-        player.aimRoot.b.sprite.sprite = null;
+        player.aimRoot.a.RemoveWeapon();
+        player.aimRoot.b.RemoveWeapon();
     }
 
-    private void OnPlayerEntered(WorldWeaponComponent weapon)
+    private void OnPlayerEntered(WorldWeaponComponent weaponComponent)
     {
-        player.aimRoot.a.sprite.sprite = weapon.weapon.discplaySprite;
-        Destroy(weapon.gameObject);
+        player.aimRoot.a.SetWeapon(new WeaponModel(weaponComponent.weapon));
+        Destroy(weaponComponent.gameObject);
     }
 }

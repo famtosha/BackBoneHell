@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4753076041462581389}
-  - component: {fileID: 4753076041462581388}
-  - component: {fileID: 4753076041462581390}
   - component: {fileID: 4753076041462581391}
   - component: {fileID: 5418256851388451943}
+  - component: {fileID: 4753076041462581388}
+  - component: {fileID: 4753076041462581390}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -36,33 +36,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4753076041462581388
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4753076041462581395}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6e05fbc3c242b84da68985f196a0de8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <aimRoot>k__BackingField: {fileID: 7533767901202414207}
-  <movement>k__BackingField: {fileID: 4753076041462581390}
---- !u!114 &4753076041462581390
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4753076041462581395}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d9f19a829dbe4c45bfe51e25f72c17e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <movementSpeed>k__BackingField: 10
 --- !u!50 &4753076041462581391
 Rigidbody2D:
   serializedVersion: 4
@@ -100,6 +73,33 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &4753076041462581388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4753076041462581395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6e05fbc3c242b84da68985f196a0de8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <aimRoot>k__BackingField: {fileID: 7533767901202414207}
+  <movement>k__BackingField: {fileID: 4753076041462581390}
+--- !u!114 &4753076041462581390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4753076041462581395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d9f19a829dbe4c45bfe51e25f72c17e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <movementSpeed>k__BackingField: 10
 --- !u!1 &6023220935326518181
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,7 +172,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.31185475, g: 0.9056604, b: 0.46207258, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 000246b6ac1134348b83ee90647a17f1, type: 3}
-  m_Name: Pistol
+  m_Name: MachineGun
   m_EditorClassIdentifier: 
-  <displayName>k__BackingField: Pistol
-  <discplaySprite>k__BackingField: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  <shootDelay>k__BackingField: 0.5
+  <displayName>k__BackingField: MachineGun
+  <discplaySprite>k__BackingField: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  <shootDelay>k__BackingField: 0.1
   <shootingStrategy>k__BackingField:
     id: 0
   references:
@@ -23,5 +23,5 @@ MonoBehaviour:
       type: {class: DefaulShootingStrategy, ns: , asm: Assembly-CSharp}
       data:
         _projectile: {fileID: 3233416444526197499, guid: a0d15a840d47d6147bfaa29b8ad1b243, type: 3}
-        _speed: 50
-        _damage: 20
+        _speed: 35
+        _damage: 10
