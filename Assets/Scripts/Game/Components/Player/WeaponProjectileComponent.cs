@@ -7,11 +7,13 @@ public class WeaponProjectileComponent : MonoBehaviour
 
     public float speed { get; private set; }
     public float damage { get; private set; }
+    public bool players { get; private set; }
 
-    public void Init(float speed, float damage)
+    public void Init(float speed, float damage, bool players)
     {
         this.speed = speed;
         this.damage = damage;
+        this.players = players;
         GetComponent<Rigidbody2D>().velocity = transform.up * speed;
     }
 

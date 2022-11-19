@@ -21,14 +21,24 @@ public class WeaponProjectileSystem : GameSystem
 
     private void OnProjectileCollide(WeaponProjectileComponent projectile, Collider2D other)
     {
-        if (other.TryGetComponent(out EnemyComponent enemy))
-        {
-            enemy.ApplyDamage(projectile.damage);
-            RemoveProjectile(projectile);
-        }
         if (other.TryGetComponent(out WallComponent wall))
         {
             RemoveProjectile(projectile);
+        }
+        if (projectile.players)
+        {
+            if (other.TryGetComponent(out EnemyComponent enemy))
+            {
+                enemy.ApplyDamage(projectile.damage);
+                RemoveProjectile(projectile);
+            }
+        }
+        else
+        {
+            if (other.TryGetComponent(out PlayerComponent enemy))
+            {
+                RemoveProjectile(projectile);
+            }
         }
     }
 }

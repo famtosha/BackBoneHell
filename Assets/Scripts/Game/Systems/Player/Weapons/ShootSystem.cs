@@ -10,7 +10,7 @@ public class ShootSystem : GameSystem
         activeWeapon.shootCD.UpdateTimer();
         if (Input.GetMouseButton(0) && activeWeapon.shootCD.isReady)
         {
-            activeWeapon.Shoot();
+            activeWeapon.Shoot(true);
             activeWeapon.shootCD.Reset();
         }
     }

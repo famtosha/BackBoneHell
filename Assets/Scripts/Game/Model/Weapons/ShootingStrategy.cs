@@ -4,7 +4,7 @@ using UnityEngine;
 [Serializable]
 public abstract class ShootingStrategy
 {
-    public abstract void Shoot(WeaponDisplayComponent view);
+    public abstract void Shoot(WeaponDisplayComponent view, bool players);
 
     protected WeaponProjectileComponent SpawnProjectile(WeaponProjectileComponent projectile)
     {

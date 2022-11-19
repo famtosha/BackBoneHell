@@ -18,8 +18,8 @@ public class WeaponModel
         this.shootCD = new Timer(this.data.shootDelay);
     }
 
-    public void Shoot()
+    public void Shoot(bool players)
     {
-        data.shootingStrategy.Shoot(view);
+        data.shootingStrategy.Shoot(view, players);
     }
 }
