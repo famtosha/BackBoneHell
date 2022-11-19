@@ -5,22 +5,33 @@ using UnityTools.Extentions;
 public class SystemsSolver : MonoBehaviour
 {
     private GameData _gameData;
-    private GameSystemBase[] _gameSystems;
+    private GameSystem[] _gameSystems;
 
     private void Awake()
     {
         FindSystems();
         LoadSystems();
+        AwakeSystem();
     }
 
     private void Start()
     {
-        StartSystems();
+        StartSystem();
     }
 
     private void Update()
     {
         UpdateSystems();
+    }
+
+    private void OnEnable()
+    {
+        _gameSystems.ForEach(x => x.Enabled());
+    }
+
+    private void OnDisable()
+    {
+        _gameSystems.ForEach(x => x.Disable());
     }
 
     private void UpdateSystems()
@@ -34,14 +45,19 @@ public class SystemsSolver : MonoBehaviour
         _gameSystems.ForEach(x => x.gameData = _gameData);
     }
 
-    private void StartSystems()
+    private void AwakeSystem()
+    {
+        _gameSystems.ForEach(x => x.OnAwake());
+    }
+
+    private void StartSystem()
     {
         _gameSystems.ForEach(x => x.OnStart());
     }
 
     private void FindSystems()
     {
-        _gameSystems = GetComponentsInChildren<GameSystemBase>()
+        _gameSystems = GetComponentsInChildren<GameSystem>()
             .OrderBy(x => x.transform.GetGlobalSiblingIndexFast())
             .ToArray();
     }

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class PlayerMovementSystem : GameSystemBase
+public class PlayerMovementSystem : GameSystem
 {
     private PlayerMovementComponent movement => gameData.player.movement;
 

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Pistol
   m_EditorClassIdentifier: 
   <displayName>k__BackingField: Pistol
-  <discplaySprite>k__BackingField: {fileID: 0}
+  <discplaySprite>k__BackingField: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
