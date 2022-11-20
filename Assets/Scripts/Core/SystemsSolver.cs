@@ -7,8 +7,12 @@ public class SystemsSolver : MonoBehaviour
     private GameData _gameData;
     private GameSystem[] _gameSystems;
 
+    private UISolver ui;
+
     private void Awake()
     {
+        ui = FindObjectOfType<UISolver>();
+        ui.screens.ForEach(x => x.Close());
         FindSystems();
         LoadSystems();
         AwakeSystem();

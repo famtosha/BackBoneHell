@@ -1,9 +1,12 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class WeaponPickupSystem : GameSystem
 {
     private List<WorldWeaponComponent> weapons => gameData.woldWeaponComponents;
     private PlayerComponent player => gameData.player;
+
+    private WeaponScreen _screen;
 
     public override void Enabled()
     {
@@ -17,6 +20,9 @@ public class WeaponPickupSystem : GameSystem
 
     public override void OnStart()
     {
+        _screen = FindObjectOfType<UISolver>().Get<WeaponScreen>();
+        _screen.Open();
+        _screen.Init(player.aimRoot.a, player.aimRoot.b);
         player.aimRoot.a.RemoveWeapon();
         player.aimRoot.b.RemoveWeapon();
     }
