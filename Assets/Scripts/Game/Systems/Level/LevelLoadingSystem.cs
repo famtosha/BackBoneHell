@@ -31,12 +31,13 @@ public class LevelLoadingSystem : GameSystem
 
     private void GenerateTilemap()
     {
-        var step = new List<GenerationStep>();
-        step.Add(new RoomGenerationStep());
-        step.Add(new WaysGenerationStep());
-        step.Add(new WallsGenerationStep());
-
-        step.ForEach(x => x.Init(level));
-        step.ForEach(x => x.Invoke());
+        var steps = new List<GenerationStep>()
+        {
+            new RoomGenerationStep(),
+            new WaysGenerationStep(),
+            new WallsGenerationStep(),
+        };
+        steps.ForEach(x => x.Init(level));
+        steps.ForEach(x => x.Invoke());
     }
 }

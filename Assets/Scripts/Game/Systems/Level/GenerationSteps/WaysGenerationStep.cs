@@ -14,7 +14,6 @@ public class WaysGenerationStep : GenerationStep
         foreach (var room in rooms)
         {
             var temp = rooms.OrderBy(otherRoom => Vector3.Distance(room, otherRoom));
-            //temp.Skip(1).Take(2).ForEach(x => SpawnWayX(x, room));
             temp.Skip(1).Take(2).ForEach(x => SpawnWayX(x, room));
         }
     }
@@ -38,31 +37,6 @@ public class WaysGenerationStep : GenerationStep
             for (int x = start; x < end; x++)
             {
                 var y = Mathf.RoundToInt((-eq.c - eq.a * x) / eq.b);
-                var point = new Vector3Int(x, y, 0);
-                SetBlocks(point);
-            }
-        }
-    }
-
-    private void SpawnWayY(Vector2 pointA, Vector2 pointB)
-    {
-        if (pointB.y < pointA.y)
-        {
-            var temp = pointB;
-            pointB = pointA;
-            pointA = temp;
-        }
-
-        int start = Mathf.RoundToInt(pointA.y);
-        int end = Mathf.RoundToInt(pointB.y);
-
-        var eq = GetEq(pointA, pointB);
-
-        if (eq.b != 0)
-        {
-            for (int y = start; y < end; y++)
-            {
-                var x = Mathf.RoundToInt((-eq.c - eq.a * y) / eq.b);
                 var point = new Vector3Int(x, y, 0);
                 SetBlocks(point);
             }
