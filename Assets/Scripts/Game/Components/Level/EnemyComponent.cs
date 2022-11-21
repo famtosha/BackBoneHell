@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class EnemyComponent : MonoBehaviour
 {
+    [SerializeField] private int _soulCount;
     [SerializeField] private float _maxHealth;
     [SerializeField] private WeaponData _weaponData;
     [SerializeField] private WeaponDisplayComponent _weapon;
@@ -46,6 +47,7 @@ public class EnemyComponent : MonoBehaviour
         health = Mathf.Max(health, 0);
         if (health <= 0)
         {
+            FindObjectOfType<SystemsSolver>().Get<LevelLoadingSystem>().gameData.soulCount.count += _soulCount;
             Destroy(gameObject);
         }
     }

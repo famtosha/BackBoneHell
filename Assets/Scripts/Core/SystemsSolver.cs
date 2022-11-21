@@ -7,15 +7,27 @@ public class SystemsSolver : MonoBehaviour
     private GameData _gameData;
     private GameSystem[] _gameSystems;
 
-    private UISolver ui;
+    private UISolver _ui;
 
     private void Awake()
     {
-        ui = FindObjectOfType<UISolver>();
-        ui.screens.ForEach(x => x.Close());
         FindSystems();
+        FindUI();
+
         LoadSystems();
+        LoadUI();
         AwakeSystem();
+    }
+
+    private void LoadUI()
+    {
+        _ui.screens.ForEach(x => x.OnAwake());
+        _ui.screens.ForEach(x => x.Close());
+    }
+
+    private void FindUI()
+    {
+        _ui = FindObjectOfType<UISolver>();
     }
 
     private void Start()
@@ -38,6 +50,11 @@ public class SystemsSolver : MonoBehaviour
         _gameSystems.ForEach(x => x.Disable());
     }
 
+    public T Get<T>() where T : GameSystem
+    {
+        return _gameSystems.OfType<T>().FirstOrDefault();
+    }
+
     private void UpdateSystems()
     {
         _gameSystems.ForEach(x => x.OnUpdate());
@@ -47,6 +64,7 @@ public class SystemsSolver : MonoBehaviour
     {
         _gameData = new GameData();
         _gameSystems.ForEach(x => x.gameData = _gameData);
+        _gameSystems.ForEach(x => x.ui = _ui);
     }
 
     private void AwakeSystem()

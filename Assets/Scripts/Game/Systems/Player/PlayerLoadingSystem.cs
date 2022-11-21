@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using UnityEngine;
 
 public class PlayerLoadingSystem : GameSystem
 {
@@ -7,5 +6,6 @@ public class PlayerLoadingSystem : GameSystem
     {
         gameData.player = FindObjectOfType<PlayerComponent>();
         gameData.woldWeaponComponents = FindObjectsOfType<WorldWeaponComponent>().ToList();
+        GetScreen<SoulCountScreen>().Open();
     }
 }

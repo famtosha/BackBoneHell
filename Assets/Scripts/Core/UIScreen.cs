@@ -14,6 +14,16 @@ public abstract class UIScreen : MonoBehaviour
         Closed();
     }
 
+    public void OnAwake()
+    {
+        Awaked();
+    }
+
+    protected virtual void Awaked()
+    {
+
+    }
+
     protected virtual void Opened()
     {
 

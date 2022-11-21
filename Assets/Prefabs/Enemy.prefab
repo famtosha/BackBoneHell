@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e520775e90ce614ba0b88177d9ff52e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _soulCount: 2
   _maxHealth: 50
   _weaponData: {fileID: 11400000, guid: efdf3790396ac0747aebcc8415313a62, type: 2}
   _weapon: {fileID: 7881085554158296993}

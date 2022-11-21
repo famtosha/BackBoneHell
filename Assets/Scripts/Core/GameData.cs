@@ -9,4 +9,6 @@ public class GameData
     public PlayerComponent player;
     public List<WorldWeaponComponent> woldWeaponComponents;
     public List<WeaponProjectileComponent> projectiles = new List<WeaponProjectileComponent>();
+
+    public Wallet soulCount = new Wallet();
 }
