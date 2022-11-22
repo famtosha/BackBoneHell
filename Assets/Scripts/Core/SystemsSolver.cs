@@ -20,6 +20,7 @@ public class SystemsSolver : MonoBehaviour
         {
             _activeState?.systems.ForEach(x => x.OnStateExit());
             _activeState = value;
+            Debug.Log($"State changed to: {_activeState.name}");
             _activeState?.systems.ForEach(x => x.OnStateEnter());
         }
     }
@@ -31,7 +32,6 @@ public class SystemsSolver : MonoBehaviour
 
         LoadSystems();
         LoadUI();
-        AwakeSystem();
     }
 
     private void LoadUI()
@@ -48,6 +48,7 @@ public class SystemsSolver : MonoBehaviour
     private void Start()
     {
         StartSystem();
+        activeState = _states.FirstOrDefault();
     }
 
     private void Update()
@@ -67,7 +68,7 @@ public class SystemsSolver : MonoBehaviour
 
     private void UpdateSystems()
     {
-        ForeachSystem(x => x.OnUpdate());
+        ForeachActiveSystem(x => x.OnUpdate());
     }
 
     private void LoadSystems()
@@ -78,14 +79,14 @@ public class SystemsSolver : MonoBehaviour
         ForeachSystem(x => x.solver = this);
     }
 
-    private void AwakeSystem()
-    {
-        ForeachSystem(x => x.OnAwake());
-    }
-
     private void StartSystem()
     {
         ForeachSystem(x => x.OnStart());
+    }
+
+    private void ForeachActiveSystem(Action<GameSystem> action)
+    {
+        _activeState.systems.ForEach(action);
     }
 
     private void ForeachSystem(Action<GameSystem> action)
@@ -98,7 +99,7 @@ public class SystemsSolver : MonoBehaviour
 
     private void FindSystems()
     {
-        _states = FindObjectsOfType<StateComponent>();
+        _states = GetComponentsInChildren<StateComponent>();
         _states.ForEach(x => x.FindSystems());
         _systems = _states.SelectMany(x => x.systems).ToArray();
     }

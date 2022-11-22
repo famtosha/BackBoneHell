@@ -4,7 +4,7 @@ using UnityEngine;
 [Serializable]
 public class DefaulShootingStrategy : ShootingStrategy
 {
-    [SerializeField] private WeaponProjectileComponent _projectile;
+    [SerializeField] private ProjectileComponent _projectile;
     [SerializeField] private float _speed;
     [SerializeField] private float _damage;
 

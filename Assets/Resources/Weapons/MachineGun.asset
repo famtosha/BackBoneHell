@@ -22,6 +22,6 @@ MonoBehaviour:
     00000000:
       type: {class: DefaulShootingStrategy, ns: , asm: Assembly-CSharp}
       data:
-        _projectile: {fileID: 3233416444526197499, guid: a0d15a840d47d6147bfaa29b8ad1b243, type: 3}
+        _projectile: {fileID: 1846067910871091893, guid: a0d15a840d47d6147bfaa29b8ad1b243, type: 3}
         _speed: 15
         _damage: 10

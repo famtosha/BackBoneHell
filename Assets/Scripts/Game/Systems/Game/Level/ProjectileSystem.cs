@@ -1,25 +1,26 @@
 ﻿using UnityEngine;
 
-public class WeaponProjectileSystem : GameSystem
+public class ProjectileSystem : GameSystem
 {
     public override void OnUpdate()
     {
         gameData.projectiles.ForEach(x => x.OnUpdate());
     }
 
-    public void RegisterProjectile(WeaponProjectileComponent projectile)
+    public void RegisterProjectile(ProjectileComponent projectile)
     {
         gameData.projectiles.Add(projectile);
         projectile.TriggerEntered.AddListener(OnProjectileCollide);
     }
 
-    public void RemoveProjectile(WeaponProjectileComponent projectile)
+    public void RemoveProjectile(ProjectileComponent projectile)
     {
         projectile.TriggerEntered.RemoveListener(OnProjectileCollide);
         projectile.ShowDestroy();
+        gameData.projectiles.Remove(projectile);
     }
 
-    private void OnProjectileCollide(WeaponProjectileComponent projectile, Collider2D other)
+    private void OnProjectileCollide(ProjectileComponent projectile, Collider2D other)
     {
         if (other.TryGetComponent(out WallComponent wall))
         {

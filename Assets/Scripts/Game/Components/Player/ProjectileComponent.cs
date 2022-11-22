@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-public class WeaponProjectileComponent : MonoBehaviour
+public class ProjectileComponent : MonoBehaviour
 {
-    public readonly UnityEvent<WeaponProjectileComponent, Collider2D> TriggerEntered = new UnityEvent<WeaponProjectileComponent, Collider2D>();
+    public readonly UnityEvent<ProjectileComponent, Collider2D> TriggerEntered = new UnityEvent<ProjectileComponent, Collider2D>();
 
     public float speed { get; private set; }
     public float damage { get; private set; }

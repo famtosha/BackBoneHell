@@ -8,20 +8,18 @@ public class LevelLoadingSystem : GameSystem
     private LevelComponent level => gameData.level;
     private List<Vector2> rooms => level.rooms;
 
-    public override void OnAwake()
+    public override void OnStateEnter()
     {
         LoadLevel();
         GenerateTilemap();
     }
 
-    public override void OnStart()
-    {
-        gameData.player.transform.position = rooms.First();
-        FindObjectOfType<EnemyComponent>().transform.position = rooms.GetRandom();
-    }
-
     private void LoadLevel()
     {
+        if (level != null)
+        {
+            Destroy(level.gameObject);
+        }
         var levels = Resources.LoadAll<LevelComponent>("Levels");
         var maxLevel = levels.Length - 1;
         var currentLevelID = gameData.currentLevelID;
@@ -36,6 +34,7 @@ public class LevelLoadingSystem : GameSystem
             new RoomGenerationStep(),
             new WaysGenerationStep(),
             new WallsGenerationStep(),
+            new ItemsGenerationStep(),
         };
         steps.ForEach(x => x.Init(level));
         steps.ForEach(x => x.Invoke());

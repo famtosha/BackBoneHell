@@ -1,11 +1,14 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyComponent : MonoBehaviour
 {
-    [SerializeField] private int _soulCount;
+    [field: SerializeField] public int soulCount { get; private set; }
     [SerializeField] private float _maxHealth;
     [SerializeField] private WeaponData _weaponData;
     [SerializeField] private WeaponDisplayComponent _weapon;
+
+    public readonly UnityEvent<EnemyComponent> Death = new UnityEvent<EnemyComponent>();
 
     private PlayerComponent _player;
 
@@ -47,7 +50,7 @@ public class EnemyComponent : MonoBehaviour
         health = Mathf.Max(health, 0);
         if (health <= 0)
         {
-            FindObjectOfType<SystemsSolver>().Get<LevelLoadingSystem>().gameData.soulCount.count += _soulCount;
+            Death?.Invoke(this);
             Destroy(gameObject);
         }
     }
