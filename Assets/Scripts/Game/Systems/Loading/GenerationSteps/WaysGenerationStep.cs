@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityTools.Extentions;
 
 public class WaysGenerationStep : GenerationStep
@@ -20,6 +21,7 @@ public class WaysGenerationStep : GenerationStep
 
     private void SpawnWayX(Vector2 pointA, Vector2 pointB)
     {
+        Debug.DrawLine(pointA, pointB, Color.red, 10000);
         if (pointB.x < pointA.x)
         {
             var temp = pointB;
@@ -27,20 +29,37 @@ public class WaysGenerationStep : GenerationStep
             pointA = temp;
         }
 
-        int start = Mathf.RoundToInt(pointA.x);
-        int end = Mathf.RoundToInt(pointB.x);
-
         var eq = GetEq(pointA, pointB);
+        var rect = GetRect(pointA, pointB);
 
         if (eq.b != 0)
         {
-            for (int x = start; x < end; x++)
+            level.rooms.Foreach(rect, (position) =>
             {
-                var y = Mathf.RoundToInt((-eq.c - eq.a * x) / eq.b);
-                var point = new Vector3Int(x, y, 0);
-                SetBlocks(point);
-            }
+                var lineY = Mathf.RoundToInt((-eq.c - eq.a * position.x) / eq.b);
+                var linePosition = new Vector3(position.x, lineY,0);
+                if (Mathf.Abs(lineY - position.y) < 3)
+                {
+                    SetBlocks(position);
+                    Debug.DrawLine(position, linePosition, Color.magenta, 10000);
+                }
+                else
+                {
+                    Debug.DrawLine(position, linePosition, Color.cyan, 10000);
+                }
+            });
         }
+    }
+
+    private RectInt GetRect(Vector2 pointA, Vector2 pointB)
+    {
+        var result = new RectInt();
+        result.xMin = (int)Mathf.Min(pointA.x, pointB.x);
+        result.yMin = (int)Mathf.Min(pointA.y, pointB.y);
+
+        result.xMax = (int)Mathf.Max(pointA.x, pointB.x);
+        result.yMax = (int)Mathf.Max(pointA.y, pointB.y);
+        return result;
     }
 
     private (float a, float b, float c) GetEq(Vector2 pointA, Vector2 pointB)
@@ -55,15 +74,15 @@ public class WaysGenerationStep : GenerationStep
     {
         SetBlock(point, 0, 0);
 
-        SetBlock(point, -1, 0);
-        SetBlock(point, 1, 0);
-        SetBlock(point, 0, -1);
-        SetBlock(point, 0, 1);
+        //SetBlock(point, -1, 0);
+        //SetBlock(point, 1, 0);
+        //SetBlock(point, 0, -1);
+        //SetBlock(point, 0, 1);
 
-        SetBlock(point, 1, 1);
-        SetBlock(point, -1, -1);
-        SetBlock(point, 1, -1);
-        SetBlock(point, -1, 1);
+        //SetBlock(point, 1, 1);
+        //SetBlock(point, -1, -1);
+        //SetBlock(point, 1, -1);
+        //SetBlock(point, -1, 1);
     }
 
     private void SetBlock(Vector3Int point, int x, int y)
