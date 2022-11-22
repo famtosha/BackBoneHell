@@ -21,7 +21,7 @@ public class WaysGenerationStep : GenerationStep
 
     private void SpawnWayX(Vector2 pointA, Vector2 pointB)
     {
-        Debug.DrawLine(pointA, pointB, Color.red, 10000);
+        Debug.DrawLine(pointA, pointB, Color.red, 5);
         if (pointB.x < pointA.x)
         {
             var temp = pointB;
@@ -41,11 +41,11 @@ public class WaysGenerationStep : GenerationStep
                 if (Mathf.Abs(lineY - position.y) < 3)
                 {
                     SetBlocks(position);
-                    Debug.DrawLine(position, linePosition, Color.magenta, 10000);
+                    Debug.DrawLine(position, linePosition, Color.magenta, 5);
                 }
                 else
                 {
-                    Debug.DrawLine(position, linePosition, Color.cyan, 10000);
+                    Debug.DrawLine(position, linePosition, Color.cyan, 5);
                 }
             });
         }

@@ -32,7 +32,7 @@ public class RoomGenerationStep : GenerationStep
 
     private RectInt SpawnRoomSimple(int x, int y)
     {
-        var rect = new RectInt(x, y, 7, 7);
+        var rect = new RectInt(x, y, 7 + Random.Range(-2,3), 7 + Random.Range(-2, 3));
         SpawnRoom(rect);
         return rect;
     }
