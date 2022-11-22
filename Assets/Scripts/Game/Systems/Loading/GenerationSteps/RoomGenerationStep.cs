@@ -20,11 +20,11 @@ public class RoomGenerationStep : GenerationStep
                     (x + 100 + Random.Range(0, 20)) / 15f,
                     (y + 100 + Random.Range(0, 20)) / 15f);
                 var noiseValue = Mathf.PerlinNoise(noiseCoords.x, noiseCoords.y);
-                var validDistance = !rooms.Any(room => Vector3.Distance(room, position) < 10);
+                var validDistance = !rooms.Any(room => Vector3.Distance(room.position, position) < 10);
                 if (noiseValue > 0.75f && validDistance)
                 {
                     var room = SpawnRoomSimple(x, y);
-                    rooms.Add(room.center);
+                    rooms.Add(new Room(room.center));
                 }
             }
         }

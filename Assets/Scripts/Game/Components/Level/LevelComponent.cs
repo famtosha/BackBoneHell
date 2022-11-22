@@ -14,8 +14,7 @@ public class LevelComponent : MonoBehaviour
     [field: SerializeField] public WorldWeaponComponent weapon { get; private set; }
     [field: SerializeField] public EnemyComponent enemy { get; private set; }
 
-    public List<Vector2> rooms = new List<Vector2>();
-
+    public readonly Rooms rooms = new Rooms();
     public readonly Enemyes enemyes = new Enemyes();
 
     public void Foreach(RectInt rect, Action<Vector3Int> action)

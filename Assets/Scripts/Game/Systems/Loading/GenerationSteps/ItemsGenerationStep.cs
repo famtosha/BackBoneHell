@@ -14,10 +14,10 @@ public class ItemsGenerationStep : GenerationStep
         {
             if (Random.Range(0, 1f) > 0.5f)
             {
-                var clone = Object.Instantiate(level.enemy, room, Quaternion.identity);
+                var clone = Object.Instantiate(level.enemy, room.position, Quaternion.identity);
                 level.enemyes.Add(clone);
             }
         }
-        Object.Instantiate(level.weapon, rooms.GetRandom(), Quaternion.identity);
+        Object.Instantiate(level.weapon, rooms.GetRandom().position, Quaternion.identity);
     }
 }

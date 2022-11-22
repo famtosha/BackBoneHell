@@ -1,12 +1,10 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using UnityTools.Extentions;
 
 public class LevelLoadingSystem : GameSystem
 {
     private LevelComponent level => gameData.level;
-    private List<Vector2> rooms => level.rooms;
+    private List<Room> rooms => level.rooms;
 
     public override void OnStateEnter()
     {

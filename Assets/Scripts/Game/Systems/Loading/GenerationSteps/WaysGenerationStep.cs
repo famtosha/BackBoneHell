@@ -13,8 +13,8 @@ public class WaysGenerationStep : GenerationStep
     {
         foreach (var room in rooms)
         {
-            var temp = rooms.OrderBy(otherRoom => Vector3.Distance(room, otherRoom));
-            temp.Skip(1).Take(2).ForEach(x => SpawnWayX(x, room));
+            var temp = rooms.OrderBy(otherRoom => Vector3.Distance(room.position, otherRoom.position));
+            temp.Skip(1).Take(2).ForEach(x => SpawnWayX(x.position, room.position));
         }
     }
 
