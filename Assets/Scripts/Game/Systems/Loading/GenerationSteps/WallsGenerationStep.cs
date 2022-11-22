@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-using System.Reflection;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class WallsGenerationStep : GenerationStep
 {
@@ -11,9 +9,9 @@ public class WallsGenerationStep : GenerationStep
 
     private void SpawnWalls()
     {
-        level.Foreach(new RectInt(-30, -30, 60, 60), (point) =>
+        level.rooms.Foreach(new RectInt(-30, -30, 60, 60), (point) =>
         {
-            if (level.floorTilemap.GetTile(point) == level.floorTile)
+            if (level.floorTilemap.GetTile(point) == level.tilesConfig.floorTile)
             {
                 Produce(point, 0, 1);
                 Produce(point, 0, -1);
@@ -37,7 +35,7 @@ public class WallsGenerationStep : GenerationStep
     {
         if (level.floorTilemap.GetTile(pos) == null)
         {
-            level.wallTilemap.SetTile(pos, level.wallTile);
+            level.wallTilemap.SetTile(pos, level.tilesConfig.wallTile);
         }
     }
 }

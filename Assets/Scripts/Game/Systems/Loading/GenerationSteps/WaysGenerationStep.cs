@@ -68,6 +68,6 @@ public class WaysGenerationStep : GenerationStep
 
     private void SetBlock(Vector3Int point, int x, int y)
     {
-        level.floorTilemap.SetTile(point + new Vector3Int(x, y, 0), level.floorTile);
+        level.floorTilemap.SetTile(point + new Vector3Int(x, y, 0), level.tilesConfig.floorTile);
     }
 }

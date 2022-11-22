@@ -22,6 +22,7 @@
 
     private void Complete()
     {
+        gameData.currentLevelID++;
         SetState<Loading>();
     }
 }

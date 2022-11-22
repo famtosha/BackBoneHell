@@ -44,9 +44,9 @@ public class RoomGenerationStep : GenerationStep
 
     private void SpawnFloor(RectInt rect, Tilemap map)
     {
-        level.Foreach(rect, (position) =>
+        level.rooms.Foreach(rect, (position) =>
         {
-            map.SetTile(position, level.floorTile);
+            map.SetTile(position, level.tilesConfig.floorTile);
         });
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 [Serializable]
 public class Room
 {
-    public Vector2 position;
+    [field: SerializeField] public Vector2 position { get; private set; }
 
     public Room(Vector2 position)
     {

@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 539981740339985390}
   - component: {fileID: 539981740339985391}
   m_Layer: 0
-  m_Name: 0
+  m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -123,7 +123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <floorTilemap>k__BackingField: {fileID: 4972729894339521382}
   <wallTilemap>k__BackingField: {fileID: 4614543160952271090}
-  <tilesConfig>k__BackingField: {fileID: 11400000, guid: 77f9968e2c847bf42a6152e9129d813d, type: 2}
+  <tilesConfig>k__BackingField: {fileID: 11400000, guid: 3c4b3806ed2ae6847b0fe70b855bea62, type: 2}
   <weapon>k__BackingField: {fileID: 2032455137442557446, guid: 4180cbfb8d9f4ae43a743f268b9bb2d4, type: 3}
   <enemy>k__BackingField: {fileID: 2451645796233503504, guid: e8f3324d4c370d54b8572986849b2099, type: 3}
 --- !u!1 &539981740862039065
