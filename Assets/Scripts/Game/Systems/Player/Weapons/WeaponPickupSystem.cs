@@ -8,12 +8,12 @@ public class WeaponPickupSystem : GameSystem
 
     private WeaponScreen _screen;
 
-    public override void Enabled()
+    public override void OnStateEnter()
     {
         weapons.ForEach(x => x.PlayerEntered.AddListener(OnPlayerEntered));
     }
 
-    public override void Disable()
+    public override void OnStateExit()
     {
         weapons.ForEach(x => x.PlayerEntered.RemoveListener(OnPlayerEntered));
     }

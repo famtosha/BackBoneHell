@@ -2,14 +2,15 @@
 
 public abstract class GameSystem : MonoBehaviour
 {
+    public SystemsSolver solver { get; set; }
     public GameData gameData { get; set; }
     public UISolver ui { get; set; }
 
     public virtual void OnAwake() { }
     public virtual void OnStart() { }
     public virtual void OnUpdate() { }
-    public virtual void Disable() { }
-    public virtual void Enabled() { }
+    public virtual void OnStateExit() { }
+    public virtual void OnStateEnter() { }
 
     protected T GetScreen<T>() where T : UIScreen
     {
@@ -18,6 +19,11 @@ public abstract class GameSystem : MonoBehaviour
 
     protected T GetSystem<T>() where T : GameSystem
     {
-        return FindObjectOfType<SystemsSolver>().Get<T>();
+        return solver.Get<T>();
+    }
+
+    protected void SetState<T>() where T : GameState
+    {
+        solver.SetState<T>();
     }
 }

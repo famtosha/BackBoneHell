@@ -1,13 +1,28 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using UnityEngine;
 using UnityTools.Extentions;
 
 public class SystemsSolver : MonoBehaviour
 {
     private GameData _gameData;
-    private GameSystem[] _gameSystems;
+    private StateComponent[] _states;
+
+    private GameSystem[] _systems;
 
     private UISolver _ui;
+
+    private StateComponent _activeState;
+    private StateComponent activeState
+    {
+        get => _activeState;
+        set
+        {
+            _activeState?.systems.ForEach(x => x.OnStateExit());
+            _activeState = value;
+            _activeState?.systems.ForEach(x => x.OnStateEnter());
+        }
+    }
 
     private void Awake()
     {
@@ -40,47 +55,51 @@ public class SystemsSolver : MonoBehaviour
         UpdateSystems();
     }
 
-    private void OnEnable()
+    public void SetState<T>() where T : GameState
     {
-        _gameSystems.ForEach(x => x.Enabled());
-    }
-
-    private void OnDisable()
-    {
-        _gameSystems.ForEach(x => x.Disable());
+        activeState = _states.FirstOrDefault(x => x.state is T);
     }
 
     public T Get<T>() where T : GameSystem
     {
-        return _gameSystems.OfType<T>().FirstOrDefault();
+        return _systems.OfType<T>().FirstOrDefault();
     }
 
     private void UpdateSystems()
     {
-        _gameSystems.ForEach(x => x.OnUpdate());
+        ForeachSystem(x => x.OnUpdate());
     }
 
     private void LoadSystems()
     {
         _gameData = new GameData();
-        _gameSystems.ForEach(x => x.gameData = _gameData);
-        _gameSystems.ForEach(x => x.ui = _ui);
+        ForeachSystem(x => x.gameData = _gameData);
+        ForeachSystem(x => x.ui = _ui);
+        ForeachSystem(x => x.solver = this);
     }
 
     private void AwakeSystem()
     {
-        _gameSystems.ForEach(x => x.OnAwake());
+        ForeachSystem(x => x.OnAwake());
     }
 
     private void StartSystem()
     {
-        _gameSystems.ForEach(x => x.OnStart());
+        ForeachSystem(x => x.OnStart());
+    }
+
+    private void ForeachSystem(Action<GameSystem> action)
+    {
+        foreach (var system in _systems)
+        {
+            action(system);
+        }
     }
 
     private void FindSystems()
     {
-        _gameSystems = GetComponentsInChildren<GameSystem>()
-            .OrderBy(x => x.transform.GetGlobalSiblingIndexFast())
-            .ToArray();
+        _states = FindObjectsOfType<StateComponent>();
+        _states.ForEach(x => x.FindSystems());
+        _systems = _states.SelectMany(x => x.systems).ToArray();
     }
 }

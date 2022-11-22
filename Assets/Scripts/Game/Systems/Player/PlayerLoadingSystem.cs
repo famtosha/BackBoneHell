@@ -7,5 +7,6 @@ public class PlayerLoadingSystem : GameSystem
         gameData.player = FindObjectOfType<PlayerComponent>();
         gameData.woldWeaponComponents = FindObjectsOfType<WorldWeaponComponent>().ToList();
         GetScreen<SoulCountScreen>().Open();
+        SetState<Game>();
     }
 }
