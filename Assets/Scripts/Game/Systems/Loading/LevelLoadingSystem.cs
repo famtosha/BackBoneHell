@@ -33,6 +33,7 @@ public class LevelLoadingSystem : GameSystem
             new WaysGenerationStep(),
             new WallsGenerationStep(),
             new ItemsGenerationStep(),
+            new RoofGenerationStep(),
         };
         steps.ForEach(x => x.Init(level));
         steps.ForEach(x => x.Invoke());

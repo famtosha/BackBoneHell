@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccbe13a106243d24e9025084d9efd2f6, type: 3}
   m_Name: DefaultLevelTiles
   m_EditorClassIdentifier: 
-  <floorTile>k__BackingField: {fileID: 11400000, guid: 36cafbc3ae909d743af90271e15e842b, type: 2}
-  <wallTile>k__BackingField: {fileID: 11400000, guid: 75aa718ec7110fa45addf03076fa54c1, type: 2}
+  <floorTile>k__BackingField: {fileID: 11400000, guid: 3af65e344827dd44780f0372432b0c31, type: 2}
+  <wallTile>k__BackingField: {fileID: 11400000, guid: 5119b442f34db11448546a9eb8342eef, type: 2}
