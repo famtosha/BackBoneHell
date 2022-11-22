@@ -7,7 +7,7 @@ public class GameData
     public int currentLevelID;
     public LevelComponent level;
     public PlayerComponent player;
-    public List<WorldWeaponComponent> woldWeaponComponents;
+    public List<WorldWeaponComponent> woldWeaponComponents = new List<WorldWeaponComponent>();
     public List<ProjectileComponent> projectiles = new List<ProjectileComponent>();
 
     public Wallet soulCount = new Wallet();

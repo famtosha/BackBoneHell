@@ -40,7 +40,7 @@ public class EnemyComponent : MonoBehaviour
     private void LookToPlayer()
     {
         var targetDirection = _player.transform.position - transform.position;
-        var targetRotation = Quaternion.LookRotation(targetDirection, Vector3.forward) * Quaternion.Euler(90, 0, 0);
+        var targetRotation = Quaternion.LookRotation(targetDirection, Vector3.forward) * Quaternion.Euler(90, -90, 0);
         _weapon.transform.rotation = Quaternion.Lerp(targetRotation, _weapon.transform.rotation, 0.9f);
     }
 
